@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "vite": "^4.3.9"
-  }
+  },
+  "main": "index.js",
+  "author": "polina0s <polina.osintseva000@gmail.com>",
+  "license": "MIT"
 }
