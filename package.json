@@ -2,7 +2,6 @@
   "name": "cats",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,9 +10,14 @@
   "devDependencies": {
     "eslint-config-prettier": "^8.8.0",
     "prettier": "2.8.8",
+    "sass": "^1.63.6",
     "vite": "^4.3.9"
   },
   "main": "index.js",
   "author": "polina0s <polina.osintseva000@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "5.3.0"
+  }
 }

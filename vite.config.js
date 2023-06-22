@@ -1,3 +1,11 @@
-import { defineConfig } from 'vite';
+const path = require('path');
 
-export default defineConfig({});
+export default {
+  root: path.resolve(__dirname, 'src'),
+  build: {
+    outDir: '../dist',
+  },
+  server: {
+    port: 8080,
+  },
+};
