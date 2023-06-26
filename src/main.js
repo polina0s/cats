@@ -6,5 +6,6 @@ import * as bootstrap from 'bootstrap';
 
 // const response = await fetch(`${link}${key}`);
 // const json = await response.json();
+// let u = json[0].url;
 
-// console.log(json);
+// console.log(u);
