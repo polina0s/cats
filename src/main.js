@@ -1,11 +1,16 @@
 import './styles/main.scss';
 import * as bootstrap from 'bootstrap';
+import { Api } from '../src/api/api';
+import { Card } from './components/card/card';
 
-// const link = import.meta.env.VITE_LINK;
-// const key = import.meta.env.VITE_KEY;
+const api = new Api();
+const row = document.querySelector('.row');
 
-// const response = await fetch(`${link}${key}`);
-// const json = await response.json();
-// let u = json[0].url;
+api.getCats().then((result) => {
+  let el = result[0];
+  let src = el.url;
 
-// console.log(u);
+  const card = new Card(src);
+
+  row.append(card.element);
+});

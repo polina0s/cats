@@ -5,7 +5,7 @@ export class Api {
   }
 
   async getCats() {
-    const response = await fetch(`${link}${key}`);
+    const response = await fetch(`${this.link}${this.key}`);
     const json = await response.json();
     return json;
   }
