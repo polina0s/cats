@@ -7,6 +7,7 @@ export class Card {
     this.element = document.createElement('div');
     this.element.classList.add('card');
     this.element.style.width = '18rem';
+    // this.element.style.height = 'auto';
 
     this.element.innerHTML = `
     <img src='${src}' class='card-img-top' alt='cat' />
