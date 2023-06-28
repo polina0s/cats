@@ -4,9 +4,24 @@ export class Api {
     this.key = import.meta.env.VITE_KEY;
   }
 
-  async getCats() {
+  // async getCats() {
+  //   const response = await fetch(`${this.link}${this.key}`);
+  //   const json = await response.json();
+  //   console.log(json);
+  //   return json;
+  // }
+
+  async getCatImages() {
     const response = await fetch(`${this.link}${this.key}`);
     const json = await response.json();
-    return json;
+
+    const images = [];
+
+    for (let i = 0; i < json.length; i++) {
+      let obj = json[i];
+      images.push(obj.url);
+    }
+
+    return images;
   }
 }

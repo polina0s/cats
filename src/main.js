@@ -6,11 +6,13 @@ import { Card } from './components/card/card';
 const api = new Api();
 const row = document.querySelector('.row');
 
-api.getCats().then((result) => {
-  let el = result[0];
-  let src = el.url;
+// api.getCats().then((result) => {
+//   let el = result[0];
+//   let src = el.url;
 
-  const card = new Card(src);
+//   const card = new Card(src);
 
-  row.append(card.element);
-});
+//   row.append(card.element);
+// });
+
+
