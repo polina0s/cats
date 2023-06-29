@@ -6,6 +6,7 @@ export class Card {
   createCard(src) {
     this.element = document.createElement('div');
     this.element.classList.add('card');
+    this.element.classList.add('text-center');
     this.element.style.width = '18rem';
     // this.element.style.height = 'auto';
 
