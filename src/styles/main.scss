@@ -1,2 +1,7 @@
 @import "bootstrap/scss/bootstrap";
 
+.card-img-size {
+  height: 16vw;
+  min-width: 100%;
+  object-fit: cover;
+}

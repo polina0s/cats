@@ -1,0 +1,23 @@
+// MEDIA 350, 768, 1024, 1440
+$desktop-w: 1440px;
+$laptop-w: 1024px;
+$tablet-w: 768px;
+$mobile-w: 375px;
+
+@mixin laptop {
+  @media screen and (max-width: $desktop-w - 1) {
+    @content
+  }
+}
+
+@mixin tablet {
+   @media screen and (max-width: $laptop-w - 1) {
+    @content
+  }
+}
+
+@mixin mobile {
+  @media screen  and (max-width: $tablet-w - 1) {
+    @content
+  }
+}

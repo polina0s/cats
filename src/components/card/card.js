@@ -10,7 +10,7 @@ export class Card {
     // this.element.style.height = 'auto';
 
     this.element.innerHTML = `
-    <img src='${src}' class='card-img-top' alt='cat' />
+    <img src='${src}' class='card-img-top card-img-size' alt='cat' />
     <div class='card-body'>
       <a href='#' class='btn btn-dark'>
         See cat
