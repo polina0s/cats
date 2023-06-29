@@ -6,7 +6,55 @@
   min-width: 100%;
   object-fit: cover;
 
-  @include mobile {
-    height: 200px;
+  @include xlarge {
+    height: 190px;
   }
+  
+  @include large {
+    height: 220px;
+  }
+
+  @include medium {
+    height: 150px;
+  } 
+
+  @include small {
+    height: 170px;
+  }
+
+  @include xsmall {
+    height: 150px;
+  }
+
+}
+
+.card-size {
+  width: 300px;
+  height: 300px;
+ 
+  @include xlarge {
+    width: 260px;
+    height: 260px;
+  }
+  
+  @include large {
+    width: 300px;
+    height: 300px;
+  }
+
+  @include medium {
+    width: 225px;
+    height: 225px;
+  }
+
+  @include small {
+    width: 260px;
+    height: 260px;
+  }
+
+  @include xsmall {
+    width: 240px;
+    height: 240px;
+  }
+
 }
