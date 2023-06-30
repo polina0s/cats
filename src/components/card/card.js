@@ -6,9 +6,11 @@ export class Card {
   createCard(src) {
     this.element = document.createElement('div');
 
-    this.element.classList.add('col-3');
-    // this.element.classList.add('car');
-    // this.element.classList.add('text-center');
+    this.element.classList.add('col-xxl-3');
+    this.element.classList.add('col-md-4');
+    this.element.classList.add('col-sm-4');
+    // this.element.classList.add('col-xs-6');
+    this.element.classList.add('mb-4');
 
     this.element.innerHTML = `
     <div class='card text-center'>
