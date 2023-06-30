@@ -6,17 +6,19 @@ export class Card {
   createCard(src) {
     this.element = document.createElement('div');
 
-    this.element.classList.add('card');
-    this.element.classList.add('text-center');
-    this.element.classList.add('card-size');
+    this.element.classList.add('col-3');
+    // this.element.classList.add('car');
+    // this.element.classList.add('text-center');
 
     this.element.innerHTML = `
-    <img src='${src}' class='card-img-top card-img-size' alt='cat' />
-    <div class='card-body'>
-      <a href='#' class='btn btn-dark'>
-        See cat
-      </a>
-    </div>    
+    <div class='card text-center'>
+      <img src='${src}' class='card-img-top card-img-size' alt='cat' />
+      <div class='card-body'>
+        <a href='#' class='btn btn-dark'>
+          See cat
+        </a>
+      </div>
+    </div>      
     `;
   }
 }
