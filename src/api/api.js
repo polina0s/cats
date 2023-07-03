@@ -12,9 +12,9 @@ export class Api {
   //   return json;
   // }
 
-  async getCatImages(limit = 20) {
+  async getCatImages(limit = 20, page = 0) {
     const response = await fetch(
-      `${this.link}${this.path}limit=${limit}&api_key=${this.key}`
+      `${this.link}${this.path}limit=${limit}&api_key=${this.key}&page=${page}`
     );
     const json = await response.json();
 
