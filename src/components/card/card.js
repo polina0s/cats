@@ -22,5 +22,8 @@ export class Card {
       </div>
     </div>      
     `;
+
+    const link = this.element.querySelector('a');
+    link.addEventListener('click', () => console.log(1123));
   }
 }
