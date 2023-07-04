@@ -10,6 +10,7 @@ export class Pagination {
     const prevPage = this.currentPage - 1;
     const isPrevDisabled = prevPage < 1;
 
+    // this.element.classList.add('mb-4', 'mt-4');
     this.element.innerHTML = `
       <ul class="pagination justify-content-center">
         <li class="page-item ${

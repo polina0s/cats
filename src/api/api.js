@@ -5,7 +5,7 @@ class Api {
     this.path = 'images/search?';
   }
 
-  async getCatImages(page = 0, limit = 20) {
+  async getCatImages(page = 0, limit = 9) {
     const response = await fetch(
       `${this.link}${this.path}limit=${limit}&api_key=${this.key}&page=${page}`
     );
