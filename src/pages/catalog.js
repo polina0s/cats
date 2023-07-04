@@ -1,10 +1,12 @@
 import { Api } from '../api/api';
 import { Card } from '../components/card/card';
+import { Loader } from '../components/loader/loader';
 
 export class CatalogPage {
   constructor() {
     this.catalogRow = document.querySelector('#catalog-row');
     this.renderCatalog();
+    this.loader = new Loader();
   }
 
   renderCatalog() {
@@ -20,7 +22,7 @@ export class CatalogPage {
     });
   }
 
-  showLoader() {
-    // insert loader into catalog row
-  }
+  // showLoader() {
+  //   // insert loader into catalog row
+  // }
 }
