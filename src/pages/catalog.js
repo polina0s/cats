@@ -35,7 +35,11 @@ export class CatalogPage {
   renderNavigation() {
     const pagination = new Pagination({
       defaultPage: this.page,
-      onPageChange: (newPage) => console.log(newPage),
+      onPageChange: (newPage) => {
+        history.replaceState(null, null, `?page=${newPage}`);
+        this.catalogRow.innerHTML = '';
+        this.renderCatalog();
+      },
     });
 
     document.querySelector('body').append(pagination.element);
