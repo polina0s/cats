@@ -1,16 +1,9 @@
-export class Api {
+class Api {
   constructor() {
     this.link = import.meta.env.VITE_LINK;
     this.key = import.meta.env.VITE_KEY;
     this.path = 'images/search?';
   }
-
-  // async getCats() {
-  //   const response = await fetch(`${this.link}${this.key}`);
-  //   const json = await response.json();
-  //   console.log(json);
-  //   return json;
-  // }
 
   async getCatImages(limit = 20, page = 0) {
     const response = await fetch(
@@ -29,4 +22,5 @@ export class Api {
   }
 }
 
-// https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=live_jRrBjUtr5PeuLvJzNhxlqawZxVHQNuljJWryTxZaMQ1uyyTefbHVKcnUAzAdebZi
+const api = new Api();
+export { api };

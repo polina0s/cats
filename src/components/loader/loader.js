@@ -7,7 +7,7 @@ export class Loader {
     this.element = document.createElement('div');
     this.element.classList.add('loader-cont');
 
-    this.element.innerHTML = `<img src="../../pics/loader.gif", alt="34" class="loader" />`;
+    this.element.innerHTML = `<img src="../../pics/loader.gif", alt="loading..." class="loader" />`;
   }
 
   startLoading(el) {

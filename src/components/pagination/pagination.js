@@ -1,11 +1,10 @@
-import { Api } from "../../api/api";
+import { api } from '../../api/api';
 
 const pageChange = (page) => {
   const url = new URLSearchParams();
 
   url.append('page', page);
-  Api.getCats(page)
-
+  api.getCats(page);
 };
 
 class Pagination {
@@ -30,7 +29,7 @@ class Page {
   constructor() {
     new Pagination({
       onPageChange,
-      currentPage: new URLSearchParams().get('page') 
-    })
+      currentPage: new URLSearchParams().get('page'),
+    });
   }
 }
