@@ -8,15 +8,15 @@ export class CatalogPage {
     const urlSearchParams = new URLSearchParams(location.search);
     this.page = +urlSearchParams.get('page') || 1;
 
-    this.catalogRow = document.querySelector('#catalog-row');
-
-    this.loader = new Loader();
     this.renderCatalog();
     this.renderNavigation();
   }
 
   renderCatalog() {
-    this.loader.startLoading(this.catalogRow);
+    const catalogRow = document.querySelector('#catalog-row');
+    const loader = new Loader();
+
+    loader.startLoading(catalogRow);
 
     api
       .getCatImages(this.page)
@@ -24,22 +24,24 @@ export class CatalogPage {
         for (let i = 0; i < result.length; i++) {
           let src = result[i];
           const card = new Card(src);
-          this.catalogRow.append(card.element);
+          catalogRow.append(card.element);
         }
       })
       .finally(() => {
-        this.loader.endLoading();
+        loader.endLoading();
       });
+  }
+
+  handlePageChange(newPage) {
+    history.replaceState(null, null, `?page=${newPage}`);
+    this.catalogRow.innerHTML = '';
+    this.renderCatalog();
   }
 
   renderNavigation() {
     const pagination = new Pagination({
       defaultPage: this.page,
-      onPageChange: (newPage) => {
-        history.replaceState(null, null, `?page=${newPage}`);
-        this.catalogRow.innerHTML = '';
-        this.renderCatalog();
-      },
+      onPageChange: (newPage) => this.handlePageChange(newPage),
     });
 
     document.querySelector('body').append(pagination.element);

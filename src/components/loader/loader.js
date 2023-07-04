@@ -5,9 +5,12 @@ export class Loader {
 
   createLoader() {
     this.element = document.createElement('div');
-    this.element.classList.add('loader-cont');
+    this.element.classList.add('text-center');
 
-    this.element.innerHTML = `<img src="../../pics/loader.gif", alt="loading..." class="loader" />`;
+    this.element.innerHTML = `
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>`;
   }
 
   startLoading(el) {
