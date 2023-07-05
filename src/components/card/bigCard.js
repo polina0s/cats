@@ -17,6 +17,12 @@ export class BigCard {
     `;
 
     const link = this.element.querySelector('a');
-    link.addEventListener('click', () => console.log(1123));
+    link.addEventListener('click', () => {
+      this.closeCard();
+    });
+  }
+
+  closeCard() {
+    this.element.remove();
   }
 }
