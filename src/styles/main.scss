@@ -41,14 +41,21 @@ body {
 
 .bigCard {
   margin: 0 auto;
-  width: 500px;
-  top: 100px;
+  width: 705px;
+  top: 70px;
+  
+  &-img {
+  height: 700px;
+  width: 700px;
+  object-fit: contain;  
+  }
   
   &-container {
     width: 100vw;
     height: 100vh;
     top: 48px;
-    right: 0px;
-    background-color: rgb(33,37,41,0.9)
+    // right: 0px;
+    background-color: rgb(33,37,41,0.9);
+    z-index: 100;
   }
 }

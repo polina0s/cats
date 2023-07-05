@@ -30,6 +30,7 @@ export class Card {
       const bigCard = new BigCard(src);
       this.body = document.querySelector('body');
       this.body.append(bigCard.element);
+      this.body.style = 'overflow: hidden';
     });
   }
 }
