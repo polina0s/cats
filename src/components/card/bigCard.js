@@ -5,10 +5,10 @@ export class BigCard {
 
   createBigCard(src) {
     this.element = document.createElement('div');
-    this.element.classList.add('bigCard-container');
+    this.element.classList.add('bigCard-container', 'position-absolute');
 
     this.element.innerHTML = `
-    <div class="card text-center" style="width: 45rem">
+    <div class="card bigCard text-center">
       <img src="${src}" class="card-img-top" alt="..." />
       <div class="card-body">
         <a href="#" class="btn btn-dark"> back </a>

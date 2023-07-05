@@ -12,7 +12,7 @@ export class Pagination {
 
     // this.element.classList.add('mb-4', 'mt-4');
     this.element.innerHTML = `
-      <ul class="pagination justify-content-center">
+      <ul class="pagination justify-content-center position-relative" style="z-index: -1">
         <li class="page-item ${
           isPrevDisabled ? 'disabled' : ''
         }"><a class="page-link" data-page="${

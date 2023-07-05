@@ -28,8 +28,8 @@ export class Card {
     const link = this.element.querySelector('a');
     link.addEventListener('click', () => {
       const bigCard = new BigCard(src);
-      this.catalogRow = document.querySelector('#catalog-row');
-      this.catalogRow.append(bigCard.element);
+      this.body = document.querySelector('body');
+      this.body.append(bigCard.element);
     });
   }
 }
