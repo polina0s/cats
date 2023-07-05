@@ -1,3 +1,5 @@
+import { BigCard } from './bigCard';
+
 export class Card {
   constructor(src) {
     this.createCard(src);
@@ -24,6 +26,10 @@ export class Card {
     `;
 
     const link = this.element.querySelector('a');
-    link.addEventListener('click', () => console.log(1123));
+    link.addEventListener('click', () => {
+      const bigCard = new BigCard(src);
+      this.catalogRow = document.querySelector('#catalog-row');
+      this.catalogRow.append(bigCard.element);
+    });
   }
 }

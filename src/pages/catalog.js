@@ -9,7 +9,7 @@ export class CatalogPage {
     this.page = +urlSearchParams.get('page') || 1;
 
     this.catalogRow = document.querySelector('#catalog-row');
-    // this.renderCatalog();
+    this.renderCatalog();
     this.renderNavigation();
   }
 
