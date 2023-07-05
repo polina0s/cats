@@ -8,15 +8,15 @@ export class CatalogPage {
     const urlSearchParams = new URLSearchParams(location.search);
     this.page = +urlSearchParams.get('page') || 1;
 
+    this.catalogRow = document.querySelector('#catalog-row');
     this.renderCatalog();
     this.renderNavigation();
   }
 
   renderCatalog() {
-    const catalogRow = document.querySelector('#catalog-row');
     const loader = new Loader();
 
-    loader.startLoading(catalogRow);
+    loader.startLoading(this.catalogRow);
 
     api
       .getCatImages(this.page)
@@ -24,7 +24,7 @@ export class CatalogPage {
         for (let i = 0; i < result.length; i++) {
           let src = result[i];
           const card = new Card(src);
-          catalogRow.append(card.element);
+          this.catalogRow.append(card.element);
         }
       })
       .finally(() => {
