@@ -7,7 +7,7 @@ class Api {
 
   async getCatImages(page = 0, limit = 9) {
     const response = await fetch(
-      `${this.link}${this.path}limit=${limit}&api_key=${this.key}&page=${page}`
+      `${this.link}${this.path}limit=${limit}&api_key=${this.key}&has_breeds=1&page=${page}`
     );
     const json = await response.json();
 
