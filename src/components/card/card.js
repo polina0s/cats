@@ -1,5 +1,3 @@
-import { BigCard } from './bigCard';
-
 export class Card {
   constructor({ url, id, link }) {
     this.url = url;

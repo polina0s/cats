@@ -5,20 +5,17 @@ class Api {
     this.path = 'images/search?';
   }
 
-  async makeARequest(page = 0, limit = 9) {
+  async getCatImages(page = 0, limit = 9) {
     const response = await fetch(
       `${this.link}${this.path}limit=${limit}&api_key=${this.key}&page=${page}`
     );
-
     const json = await response.json();
 
     return json;
   }
 
-  async getCatImages(page = 0, limit = 9) {
-    const response = await fetch(
-      `${this.link}${this.path}limit=${limit}&api_key=${this.key}&page=${page}`
-    );
+  async getCatById(id) {
+    const response = await fetch(`${this.link}images/${id}`);
     const json = await response.json();
 
     return json;
