@@ -3,11 +3,12 @@ import { BigCard } from './bigCard';
 export class Card {
   constructor({ url, id, onButtonClick }) {
     this.id = id;
+    this.onButtonClick = onButtonClick;
 
     this.createCard(url);
   }
 
-  createCard(src) {
+  createCard(src, onButtonClick) {
     this.element = document.createElement('div');
 
     this.element.classList.add('col-xxl-3');
@@ -30,10 +31,7 @@ export class Card {
     const link = this.element.querySelector('a');
     link.addEventListener('click', () => {
       console.log(123);
-      // const bigCard = new BigCard(src);
-      // this.body = document.querySelector('body');
-      // this.body.append(bigCard.element);
-      // this.body.style = 'overflow: hidden';
+      this.onButtonClick();
     });
   }
 }
