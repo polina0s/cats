@@ -6,9 +6,20 @@ import { api } from './api/api';
 import Navigo from 'navigo';
 class App {
   bootstrap() {
-    new CatalogPage();
-
     const router = new Navigo('/');
+
+    router.on('/', () => {
+      new CatalogPage();
+    });
+
+    router.on('/cat/:id', function (match) {
+      console.log(match);
+      const id = match.data.id;
+
+      console.log(id);
+    });
+
+    router.resolve();
   }
 }
 

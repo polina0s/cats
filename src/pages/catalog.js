@@ -22,7 +22,11 @@ export class CatalogPage {
       .getCatImages(this.page)
       .then((result) => {
         result.forEach((catImage) => {
-          const card = new Card(catImage);
+          const card = new Card({
+            id: catImage.id,
+            url: catImage.url,
+            link: `/cat/${catImage.id}`,
+          });
           this.catalogRow.append(card.element);
         });
       })

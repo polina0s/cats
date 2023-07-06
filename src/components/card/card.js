@@ -1,14 +1,15 @@
 import { BigCard } from './bigCard';
 
 export class Card {
-  constructor({ url, id, onButtonClick }) {
+  constructor({ url, id, link }) {
+    this.url = url;
     this.id = id;
-    this.onButtonClick = onButtonClick;
+    this.link = link;
 
-    this.createCard(url);
+    this.createCard();
   }
 
-  createCard(src, onButtonClick) {
+  createCard() {
     this.element = document.createElement('div');
 
     this.element.classList.add('col-xxl-3');
@@ -19,19 +20,13 @@ export class Card {
 
     this.element.innerHTML = `
     <div class='card text-center'>
-      <img src='${src}' class='card-img-top card-img-size' alt='cat' />
+      <img src='${this.url}' class='card-img-top card-img-size' alt='cat' />
       <div class='card-body'>
-        <a href='#' class='btn btn-dark'>
+        <a href='${this.link}' class='btn btn-dark' data-navigo>
           See cat
         </a>
       </div>
     </div>      
     `;
-
-    const link = this.element.querySelector('a');
-    link.addEventListener('click', () => {
-      console.log(123);
-      this.onButtonClick();
-    });
   }
 }
