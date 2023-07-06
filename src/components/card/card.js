@@ -1,8 +1,10 @@
 import { BigCard } from './bigCard';
 
 export class Card {
-  constructor(src) {
-    this.createCard(src);
+  constructor({ url, id, onButtonClick }) {
+    this.id = id;
+
+    this.createCard(url);
   }
 
   createCard(src) {
@@ -27,10 +29,11 @@ export class Card {
 
     const link = this.element.querySelector('a');
     link.addEventListener('click', () => {
-      const bigCard = new BigCard(src);
-      this.body = document.querySelector('body');
-      this.body.append(bigCard.element);
-      this.body.style = 'overflow: hidden';
+      console.log(123);
+      // const bigCard = new BigCard(src);
+      // this.body = document.querySelector('body');
+      // this.body.append(bigCard.element);
+      // this.body.style = 'overflow: hidden';
     });
   }
 }

@@ -21,11 +21,10 @@ export class CatalogPage {
     api
       .getCatImages(this.page)
       .then((result) => {
-        for (let i = 0; i < result.length; i++) {
-          let src = result[i];
-          const card = new Card(src);
+        result.forEach((catImage) => {
+          const card = new Card(catImage);
           this.catalogRow.append(card.element);
-        }
+        });
       })
       .finally(() => {
         loader.endLoading();
