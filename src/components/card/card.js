@@ -20,7 +20,7 @@ export class Card {
     <div class='card text-center'>
       <img src='${this.url}' class='card-img-top card-img-size' alt='cat' />
       <div class='card-body'>
-        <a href='${this.link}' class='btn btn-dark' data-navigo>
+        <a href='${this.link}' class='btn btn-info' data-navigo>
           See cat
         </a>
       </div>
@@ -28,5 +28,3 @@ export class Card {
     `;
   }
 }
-
-

@@ -43,21 +43,5 @@ export class CatPage {
         }
       })
       .finally(() => loader.endLoading());
-
-    //  api
-    //    .getCatImages(this.page)
-    //    .then((result) => {
-    //      result.forEach((catImage) => {
-    //        const card = new Card({
-    //          id: catImage.id,
-    //          url: catImage.url,
-    //          link: `/cat/${catImage.id}`,
-    //        });
-    //        this.catalogRow.append(card.element);
-    //      });
-    //    })
-    //    .finally(() => {
-    //      loader.endLoading();
-    //    });
   }
 }
