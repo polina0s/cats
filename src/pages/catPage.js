@@ -1,6 +1,6 @@
 import { api } from '../api/api';
 import { Loader } from '../components/loader/loader';
-import { BigCard } from '../components/card/bigCard';
+import { BreedCard } from '../components/card/breedCard';
 export class CatPage {
   constructor({ id }) {
     this.id = id;
@@ -19,23 +19,27 @@ export class CatPage {
       .then((result) => {
         const breed = result.breeds[0];
         console.log(breed);
-        const card = new BigCard({
-          url: result.url,
-          name: breed.name,
-          wiki: breed.wikipedia_url,
-          adaptibility: breed.adaptability,
-          description: breed.description,
-          childFriendly: breed.child_friendly,
-          temperament: breed.temperament,
-          dogFriendly: breed.dog_friendly,
-          strangerFriendly: breed.stranger_friendly,
-          health: breed.health_issues,
-          intelligence: breed.intelligence,
-          lifeSpan: breed.life_span,
-          origin: breed.origin,
-          socialNeeds: breed.social_needs,
-        });
-        this.catalogRow.append(card.element);
+        if (breed) {
+          const card = new BreedCard({
+            url: result.url,
+            name: breed.name,
+            wiki: breed.wikipedia_url,
+            adaptibility: breed.adaptability,
+            description: breed.description,
+            childFriendly: breed.child_friendly,
+            temperament: breed.temperament,
+            dogFriendly: breed.dog_friendly,
+            strangerFriendly: breed.stranger_friendly,
+            health: breed.health_issues,
+            intelligence: breed.intelligence,
+            lifeSpan: breed.life_span,
+            origin: breed.origin,
+            socialNeeds: breed.social_needs,
+          });
+          this.catalogRow.append(card.element);
+        } else {
+          console.log(result);
+        }
       })
       .finally(() => loader.endLoading());
 

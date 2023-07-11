@@ -1,4 +1,4 @@
-export class BigCard {
+export class BreedCard {
   constructor({
     url,
     name,
@@ -35,6 +35,7 @@ export class BigCard {
 
   createCatCard() {
     this.element = document.createElement('div');
+    this.element.style = 'max-width: 1120px; margin: 0 auto';
 
     this.element.innerHTML = `
     <div class="card mb-4">
