@@ -19,7 +19,7 @@ export class CatalogPage {
     loader.startLoading(this.catalogRow);
 
     api
-      .getCatImages(this.page)
+      .getAllCats(this.page)
       .then((result) => {
         result.forEach((catImage) => {
           const card = new Card({
