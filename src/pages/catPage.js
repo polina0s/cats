@@ -1,6 +1,7 @@
 import { api } from '../api/api';
 import { Loader } from '../components/loader/loader';
 import { BreedCard } from '../components/card/breedCard';
+import { ImageCard } from '../components/card/imageCard';
 export class CatPage {
   constructor({ id }) {
     this.id = id;
@@ -17,9 +18,8 @@ export class CatPage {
     api
       .getCatById(this.id)
       .then((result) => {
-        const breed = result.breeds[0];
-        console.log(breed);
-        if (breed) {
+        if (result.breeds) {
+          const breed = result.breeds[0];
           const card = new BreedCard({
             url: result.url,
             name: breed.name,
@@ -38,7 +38,8 @@ export class CatPage {
           });
           this.catalogRow.append(card.element);
         } else {
-          console.log(result);
+          const card = new ImageCard(result.url);
+          this.catalogRow.append(card.element);
         }
       })
       .finally(() => loader.endLoading());
