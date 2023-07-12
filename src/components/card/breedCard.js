@@ -44,7 +44,7 @@ export class BreedCard {
         <div class="col-md-6">
           <img src="${
             this.url
-          }" style="height: 100%; object-fit: contain" class="img-fluid rounded-start" alt="...">
+          }" style="height: 100%; object-fit: contain" class="img-fluid rounded-start p-2" alt="...">
         </div>
         <div class="col-md-6">
           <div class="card-body">
@@ -55,7 +55,7 @@ export class BreedCard {
             <a href="${
               this.wiki
             }" class="card-link link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"><b>Wikipedia</b></a>
-            <ul class="list-group mt-3 mb-4">
+            <ul class="list-group mb-3 mt-2">
               <li class="list-group-item"><b>adaptibility</b>
                 <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
                   <div class="progress-bar bg-info" style="width: ${

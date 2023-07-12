@@ -14,12 +14,8 @@ class App {
     });
 
     router.on('/cat/:id', function (match) {
-      // console.log(match);
       const id = match.data.id;
       new CatPage({ id: id });
-      api.getCatById(id).then((a) => console.log(a));
-
-      // console.log(id);
     });
 
     router.resolve();

@@ -2,6 +2,8 @@ import { api } from '../api/api';
 import { Card } from '../components/card/card';
 import { Loader } from '../components/loader/loader';
 import { Pagination } from '../components/pagination/pagination';
+import { filter } from '../components/filter/filter';
+import { doc } from 'prettier';
 
 export class CatalogPage {
   constructor() {
@@ -9,6 +11,7 @@ export class CatalogPage {
     this.page = +urlSearchParams.get('page') || 1;
 
     this.catalogRow = document.querySelector('#catalog-row');
+    this.filterContainer = document.querySelector('#filter-container');
     this.renderCatalog();
     this.renderNavigation();
   }
@@ -32,6 +35,7 @@ export class CatalogPage {
       })
       .finally(() => {
         loader.endLoading();
+        this.filterContainer.append(filter.element);
       });
   }
 

@@ -15,22 +15,22 @@ export class Pagination {
       <ul class="pagination justify-content-center">
         <li class="page-item ${
           isPrevDisabled ? 'disabled' : ''
-        }"><a class="page-link" data-page="${
+        }"><a class="page-link text-black" data-page="${
       this.currentPage - 1
     }" href="#">Previous</a></li>
 
         ${
           isPrevDisabled
             ? ''
-            : `<li class="page-item"><a class="page-link" data-page="${
+            : `<li class="page-item"><a class="page-link text-black" data-page="${
                 this.currentPage - 1
               }" href="#">${this.currentPage - 1}</a></li>`
         }
     
-        <li class="page-item active"><a class="page-link" data-page="${
+        <li class="page-item active"><a class="page-link bg-info border-info text-black" data-page="${
           this.currentPage
         }" href="#">${this.currentPage}</a></li>
-        <li class="page-item"><a class="page-link" data-page="${
+        <li class="page-item"><a class="page-link text-black" data-page="${
           this.currentPage + 1
         }" href="#">${this.currentPage + 1}</a></li>
         
@@ -40,7 +40,7 @@ export class Pagination {
             ? `
             <li class="page-item">
               <a
-                class="page-link"
+                class="page-link text-black"
                 data-page="${this.currentPage + 2}"
                 href="#"
               >
@@ -51,7 +51,7 @@ export class Pagination {
             : ''
         }
 
-        <li class="page-item"><a class="page-link" data-page="${
+        <li class="page-item"><a class="page-link text-black" data-page="${
           this.currentPage + 1
         }" href="#">Next</a></li>
 
