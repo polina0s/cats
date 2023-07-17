@@ -1,17 +1,8 @@
-/**
- * class Select
- *
- * options = [{value, label}, {value: 1, label: with breed}]
- * defaultSelected = undefined || value
- *
- * [{value: 1, label: odin}, {value: 2, label: two}]
- * defaultSelected = 2
- * onChange
- */
-
-class Select {
-  constructor({ defaultSelected }) {
+export class Select {
+  constructor({ defaultSelected, onChange, options }) {
+    this.options = options;
     this.selected = defaultSelected;
+    this.onChange = onChange;
     this.createSelect();
   }
 
@@ -21,16 +12,23 @@ class Select {
 
     this.element.innerHTML = `
     <select class="form-select mb-4" style="width: 170px" aria-label="Default select example">
-      <option value="1">random</option>
-      <option value="2">with breed</option>
-      <option value="3">without breed</option>
+      ${this.options
+        .map((obj) => {
+          const isSelected = this.selected === obj.value;
+          console.log(this.selected, obj.value, isSelected);
+          return `<option value=${obj.value} ${isSelected ? 'selected' : ''}>${
+            obj.label
+          }</option>`;
+        })
+        .join('')}
     </select>
     `;
 
     this.select = this.element.querySelector('select');
-    this.select.addEventListener('change', (e) => console.log(e.target.value));
+    this.select.addEventListener('change', (e) => {
+      this.selected = +e.target.value;
+      this.onChange?.(e);
+      this.createSelect();
+    });
   }
 }
-
-const select = new Select();
-export { select };
