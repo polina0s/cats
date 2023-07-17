@@ -45,6 +45,10 @@ export class CatalogPage {
     this.renderCatalog();
   }
 
+  handleFilterChange(value) {
+    
+  }
+
   renderNavigation() {
     const pagination = new Pagination({
       defaultPage: this.page,
