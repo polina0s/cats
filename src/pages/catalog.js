@@ -50,7 +50,7 @@ export class CatalogPage {
   handleFilterChange(value) {
     this.breed = BREEDS_MAP.get(value);
 
-    history.replaceState(null, null, `?page=${this.page}&${value}`);
+    history.replaceState(null, null, `?page=1&${value}`);
     this.catalogRow.innerHTML = '';
     this.renderCatalog();
   }
