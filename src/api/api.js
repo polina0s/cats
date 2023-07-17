@@ -7,16 +7,14 @@ class Api {
     this.path = 'images/search?';
   }
 
-  async getAllCats(page = 0, limit = 9, breed = null) {
+  async getCats(page = 0, limit = 20, breed = null) {
     const query = queryString.stringify(
-      { page, limit, breed: 1 },
+      { page, limit, has_breeds: breed },
       { skipNull: true }
     );
 
-    console.log(query);
-
     const response = await fetch(
-      `${this.link}${this.path}limit=${limit}&api_key=${this.key}${breed}&page=${page}`
+      `${this.link}${this.path}${query}&api_key=${this.key}`
     );
     const json = await response.json();
 

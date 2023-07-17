@@ -3,11 +3,13 @@ import { Card } from '../components/card/card';
 import { Loader } from '../components/loader/loader';
 import { Pagination } from '../components/pagination/pagination';
 import { Select } from '../components/select/select';
+import { BREEDS_OPTIONS, BREEDS_MAP } from '../config/breeds';
 
 export class CatalogPage {
   constructor() {
     const urlSearchParams = new URLSearchParams(location.search);
     this.page = +urlSearchParams.get('page') || 1;
+    this.breed = null;
 
     this.catalogRow = document.querySelector('#catalog-row');
     this.selectContainer = document.querySelector('#select-container');
@@ -23,7 +25,7 @@ export class CatalogPage {
     loader.startLoading(this.catalogRow);
 
     api
-      .getAllCats(this.page)
+      .getCats(this.page, 12, this.breed)
       .then((result) => {
         result.forEach((catImage) => {
           const card = new Card({
@@ -46,7 +48,11 @@ export class CatalogPage {
   }
 
   handleFilterChange(value) {
-    
+    this.breed = BREEDS_MAP.get(value);
+
+    history.replaceState(null, null, `?page=${this.page}&${value}`);
+    this.catalogRow.innerHTML = '';
+    this.renderCatalog();
   }
 
   renderNavigation() {
@@ -60,13 +66,9 @@ export class CatalogPage {
 
   renderFilters() {
     const breedSelect = new Select({
-      onChange: (e) => console.log(e, 123443243),
-      defaultSelected: 2,
-      options: [
-        { value: 1, label: 'random' },
-        { value: 2, label: 'with breed' },
-        { value: 3, label: 'without breed' },
-      ],
+      onChange: (e) => this.handleFilterChange(e.target.value),
+      defaultSelected: this.breed,
+      options: BREEDS_OPTIONS,
     });
 
     this.selectContainer.append(breedSelect.element);
