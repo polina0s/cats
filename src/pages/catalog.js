@@ -11,7 +11,7 @@ export class CatalogPage {
     this.urlSearchParams = new URLSearchParams(location.search);
     this.page = +this.urlSearchParams.get('page') || 1;
     this.breed = null;
-    this.hasBreeds = +this.urlSearchParams.get('breeds');
+    this.hasBreeds = this.urlSearchParams.get('breeds') || null;
 
     this.catalogRow = document.querySelector('#catalog-row');
     this.selectContainer = document.querySelector('#select-container');
@@ -51,7 +51,7 @@ export class CatalogPage {
 
     history.replaceState(null, null, `?${query}`);
     this.catalogRow.innerHTML = '';
-    this.renderCatalog();
+    // this.renderCatalog();
   }
 
   handleFilterChange(value) {
