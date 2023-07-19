@@ -1,5 +1,5 @@
 export class Pagination {
-  constructor({ defaultPage = 1, onPageChange}) {
+  constructor({ defaultPage = 1, onPageChange }) {
     this.currentPage = defaultPage;
     this.onPageChange = onPageChange;
     this.element = document.createElement('nav');
@@ -15,8 +15,8 @@ export class Pagination {
         <li class="page-item ${
           isPrevDisabled ? 'disabled' : ''
         }"><a class="page-link text-black" data-page="${
-      this.currentPage - 1
-    }" href="#">Previous</a></li>
+          this.currentPage - 1
+        }" href="#">Previous</a></li>
 
         ${
           isPrevDisabled
@@ -65,7 +65,7 @@ export class Pagination {
         const newPage = Number(e.target.getAttribute('data-page'));
         this.setPage(newPage);
         this.onPageChange?.(newPage);
-      })
+      }),
     );
   }
 

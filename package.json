@@ -5,13 +5,17 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "yarn eslint --fix --ext .js src"
   },
   "devDependencies": {
     "dotenv-webpack": "^8.0.1",
+    "eslint": "^8.45.0",
     "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "5.0.0",
     "normalize.css": "^8.0.1",
-    "prettier": "2.8.8",
+    "prettier": "3.0.0",
+    "prettier-eslint": "^15.0.1",
     "pug": "^3.0.2",
     "sass": "^1.63.6",
     "vite": "^4.3.9"

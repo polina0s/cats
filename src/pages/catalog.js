@@ -45,7 +45,7 @@ export class CatalogPage {
   handlePageChange(newPage) {
     const query = queryString.stringify(
       { page: newPage, breeds: this.breed },
-      { skipNull: true }
+      { skipNull: true },
     );
 
     history.replaceState(null, null, `?${query}`);
@@ -58,7 +58,7 @@ export class CatalogPage {
     // console.log(value, this.breed);
     const query = queryString.stringify(
       { page: 1, breeds: value },
-      { skipNull: true }
+      { skipNull: true },
     );
 
     history.replaceState(null, null, `?${query}`);
