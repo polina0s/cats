@@ -1,4 +1,4 @@
-const BREEDS_KEYS = {
+export const BREEDS_KEYS = {
   RANDOM: 'random',
   BREEDS: 'breeds',
   NO_BREEDS: 'no_breeds',

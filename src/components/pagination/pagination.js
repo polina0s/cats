@@ -1,5 +1,5 @@
 export class Pagination {
-  constructor({ defaultPage = 1, onPageChange }) {
+  constructor({ defaultPage = 1, onPageChange}) {
     this.currentPage = defaultPage;
     this.onPageChange = onPageChange;
     this.element = document.createElement('nav');
@@ -64,13 +64,13 @@ export class Pagination {
         e.preventDefault();
         const newPage = Number(e.target.getAttribute('data-page'));
         this.setPage(newPage);
+        this.onPageChange?.(newPage);
       })
     );
   }
 
   setPage(newPageNumber) {
     this.currentPage = newPageNumber;
-    this.onPageChange?.(newPageNumber);
     this.render();
   }
 }
