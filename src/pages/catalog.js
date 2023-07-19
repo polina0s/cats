@@ -55,7 +55,6 @@ export class CatalogPage {
 
   handleFilterChange(value) {
     this.breed = value;
-    // console.log(value, this.breed);
     const query = queryString.stringify(
       { page: 1, breeds: value },
       { skipNull: true },

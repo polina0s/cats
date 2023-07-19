@@ -15,7 +15,6 @@ export class Select {
       ${this.options
         .map((obj) => {
           const isSelected = this.selected === obj.value;
-          // console.log(this.selected, obj.value, isSelected);
           return `<option value=${obj.value} ${isSelected ? 'selected' : ''}>${
             obj.label
           }</option>`;
