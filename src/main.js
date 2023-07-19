@@ -1,7 +1,6 @@
 import './styles/main.scss';
 import { CatalogPage } from './pages/catalog';
 import { CatPage } from './pages/catPage';
-import * as bootstrap from 'bootstrap';
 import Navigo from 'navigo';
 class App {
   bootstrap() {
