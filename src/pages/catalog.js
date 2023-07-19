@@ -4,6 +4,7 @@ import { Loader } from '../components/loader/loader';
 import { Pagination } from '../components/pagination/pagination';
 import { Select } from '../components/select/select';
 import { BREEDS_OPTIONS, BREEDS_MAP, BREEDS_KEYS } from '../config/breeds';
+import { ORDER_OPTIONS, ORDER_MAP, ORDER_KEYS } from '../config/order';
 import queryString from 'query-string';
 
 export class CatalogPage {
@@ -11,11 +12,13 @@ export class CatalogPage {
     this.urlSearchParams = new URLSearchParams(location.search);
     this.page = +this.urlSearchParams.get('page') || 1;
     this.breed = this.urlSearchParams.get('breeds') || BREEDS_KEYS.RANDOM;
+    this.order = this.urlSearchParams.get('order') || ORDER_KEYS.RANDOM;
 
     this.catalogRow = document.querySelector('#catalog-row');
     this.selectContainer = document.querySelector('#select-container');
 
     this.renderBreedsFilters();
+    this.renderOrderFilters();
     this.renderCatalog();
     this.renderNavigation();
   }
@@ -83,5 +86,14 @@ export class CatalogPage {
     });
 
     this.selectContainer.append(breedSelect.element);
+  }
+
+  renderOrderFilters() {
+    const orderSelect = new Select({
+      defaultSelected: this.order,
+      options: ORDER_OPTIONS,
+    });
+
+    this.selectContainer.append(orderSelect.element);
   }
 }

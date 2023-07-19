@@ -11,7 +11,7 @@ export class Select {
     this.element.classList.add('select');
 
     this.element.innerHTML = `
-    <select class="form-select mb-4" style="width: 170px" aria-label="Default select example">
+    <select class="form-select mb-4 me-2" style="width: 170px" aria-label="Default select example">
       ${this.options
         .map((obj) => {
           const isSelected = this.selected === obj.value;
