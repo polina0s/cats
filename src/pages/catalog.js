@@ -15,7 +15,7 @@ export class CatalogPage {
     this.catalogRow = document.querySelector('#catalog-row');
     this.selectContainer = document.querySelector('#select-container');
 
-    this.renderFilters();
+    this.renderBreedsFilters();
     this.renderCatalog();
     this.renderNavigation();
   }
@@ -75,7 +75,7 @@ export class CatalogPage {
     document.querySelector('body').append(this.pagination.element);
   }
 
-  renderFilters() {
+  renderBreedsFilters() {
     const breedSelect = new Select({
       onChange: (e) => this.handleFilterChange(e.target.value),
       defaultSelected: this.breed,
