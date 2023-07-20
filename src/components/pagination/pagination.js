@@ -83,10 +83,6 @@ export class Pagination {
   }
 
   activatePagination() {
-    const buttons = this.element.querySelectorAll('li');
-
-    buttons.forEach((btn) => {
-      btn.classList.remove('disabled');
-    });
+    this.render();
   }
 }

@@ -31,9 +31,9 @@ export class CatalogPage {
     loader.startLoading(this.catalogRow);
     this.pagination.disablePagination();
 
-    document
-      .querySelectorAll('select')
-      .forEach((el) => el.setAttribute('disabled', 'disabled'));
+    // document
+    // .querySelectorAll('select')
+    // .forEach((el) => el.setAttribute('disabled', 'disabled'));
 
     api
       .getCats({
