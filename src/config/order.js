@@ -11,7 +11,7 @@ export const ORDER_MAP = new Map([
 ]);
 
 export const ORDER_OPTIONS = [
-  { value: ORDER_KEYS.RANDOM, label: 'random' },
-  { value: ORDER_KEYS.ASCENDING, label: 'ascending' },
-  { value: ORDER_KEYS.DESCENDING, label: 'descending' },
+  { value: ORDER_KEYS.RANDOM, label: 'Random' },
+  { value: ORDER_KEYS.ASCENDING, label: 'Ascending' },
+  { value: ORDER_KEYS.DESCENDING, label: 'Descending' },
 ];

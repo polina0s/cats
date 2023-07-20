@@ -11,7 +11,7 @@ export const BREEDS_MAP = new Map([
 ]);
 
 export const BREEDS_OPTIONS = [
-  { value: BREEDS_KEYS.RANDOM, label: 'random' },
-  { value: BREEDS_KEYS.BREEDS, label: 'with breed' },
-  { value: BREEDS_KEYS.NO_BREEDS, label: 'without breed' },
+  { value: BREEDS_KEYS.RANDOM, label: 'Random' },
+  { value: BREEDS_KEYS.BREEDS, label: 'With breed' },
+  { value: BREEDS_KEYS.NO_BREEDS, label: 'Without breed' },
 ];

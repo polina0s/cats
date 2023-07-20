@@ -25,15 +25,20 @@ class Api {
     return json;
   }
 
+  async getBreedsList() {
+    const response = await fetch(`${this.link}breeds`);
+    const json = await response.json();
+
+    return json.map((obj) => {
+      return { value: obj.id, label: obj.name };
+    });
+  }
+
   async request(url, options = {}) {
     return fetch(url, {
       ...options,
       headers: { ...options?.headers, 'x-api-key': this.key },
     });
-
-    // const response = await fetch(
-    //   `${this.link}images/search?${query}&api_key=${this.key}`,
-    // );
   }
 }
 

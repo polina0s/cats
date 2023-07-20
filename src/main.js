@@ -2,8 +2,11 @@ import './styles/main.scss';
 import { CatalogPage } from './pages/catalog';
 import { CatPage } from './pages/catPage';
 import Navigo from 'navigo';
+import { api } from './api/api';
 class App {
   bootstrap() {
+    api.getBreedsList();
+
     const router = new Navigo('/');
 
     router.on('/', () => {

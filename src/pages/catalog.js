@@ -13,12 +13,14 @@ export class CatalogPage {
     this.page = +this.urlSearchParams.get('page') || 1;
     this.breed = this.urlSearchParams.get('breeds') || BREEDS_KEYS.RANDOM;
     this.order = this.urlSearchParams.get('order') || ORDER_KEYS.RANDOM;
+    this.name = this.urlSearchParams.get('breed_ids') || 'none';
 
     this.catalogRow = document.querySelector('#catalog-row');
     this.selectContainer = document.querySelector('#select-container');
 
     this.renderBreedsFilters();
     this.renderOrderFilters();
+    this.renderNameList();
     this.renderNavigation();
     this.renderCatalog();
   }
@@ -104,5 +106,18 @@ export class CatalogPage {
     });
 
     this.selectContainer.append(orderSelect.element);
+  }
+
+  renderNameList() {
+    api.getBreedsList().then((result) => {
+      const nameList = new Select({
+        defaultSelected: this.name,
+        options: result,
+      });
+      nameList.element
+        .querySelector('select')
+        .setAttribute('style', 'width: 210px');
+      this.selectContainer.append(nameList.element);
+    });
   }
 }
