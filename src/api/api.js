@@ -6,9 +6,15 @@ class Api {
     this.key = import.meta.env.VITE_KEY;
   }
 
-  async getCats({ page = 0, limit = 20, breed = null, order = null }) {
+  async getCats({
+    page = 0,
+    limit = 20,
+    breed = null,
+    order = null,
+    breedId = null,
+  }) {
     const query = queryString.stringify(
-      { page, limit, has_breeds: breed, order: order },
+      { page, limit, has_breeds: breed, order: order, breed_ids: breedId },
       { skipNull: true },
     );
 

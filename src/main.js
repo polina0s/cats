@@ -5,8 +5,6 @@ import Navigo from 'navigo';
 import { api } from './api/api';
 class App {
   bootstrap() {
-    api.getBreedsList();
-
     const router = new Navigo('/');
 
     router.on('/', () => {

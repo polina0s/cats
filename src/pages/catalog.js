@@ -13,7 +13,7 @@ export class CatalogPage {
     this.page = +this.urlSearchParams.get('page') || 1;
     this.breed = this.urlSearchParams.get('breeds') || BREEDS_KEYS.RANDOM;
     this.order = this.urlSearchParams.get('order') || ORDER_KEYS.RANDOM;
-    this.name = this.urlSearchParams.get('breed_ids') || 'none';
+    this.name = this.urlSearchParams.get('breedId') || null;
 
     this.catalogRow = document.querySelector('#catalog-row');
     this.selectContainer = document.querySelector('#select-container');
@@ -37,6 +37,7 @@ export class CatalogPage {
         limit: 12,
         breed: BREEDS_MAP.get(this.breed),
         order: ORDER_MAP.get(this.order),
+        breedId: this.name,
       })
       .then((result) => {
         result.forEach((catImage) => {
@@ -47,16 +48,27 @@ export class CatalogPage {
           });
           this.catalogRow.append(card.element);
         });
+
+        if (result.length >= 12) {
+          this.pagination.activatePagination();
+        }
+      })
+      .catch(() => {
+        alert('reload page');
       })
       .finally(() => {
         loader.endLoading();
-        this.pagination.activatePagination();
       });
   }
 
-  handleChange({ page = this.page, breed = this.breed, order = this.order }) {
+  handleChange({
+    page = this.page,
+    breed = this.breed,
+    order = this.order,
+    breedId = this.name,
+  }) {
     const query = queryString.stringify(
-      { page: page, breeds: breed, order: order },
+      { page: page, breeds: breed, order: order, breedId: breedId },
       { skipNull: true },
     );
 
@@ -111,12 +123,19 @@ export class CatalogPage {
   renderNameList() {
     api.getBreedsList().then((result) => {
       const nameList = new Select({
+        onChange: (e) => {
+          this.name = e.target.value;
+          this.setDefaultPage();
+          this.handleChange({ breedId: e.target.value });
+        },
         defaultSelected: this.name,
         options: result,
       });
+
       nameList.element
         .querySelector('select')
         .setAttribute('style', 'width: 210px');
+
       this.selectContainer.append(nameList.element);
     });
   }
