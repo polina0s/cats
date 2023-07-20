@@ -73,4 +73,20 @@ export class Pagination {
     this.currentPage = newPageNumber;
     this.render();
   }
+
+  disablePagination() {
+    const buttons = this.element.querySelectorAll('li');
+
+    buttons.forEach((btn) => {
+      btn.classList.add('disabled');
+    });
+  }
+
+  activatePagination() {
+    const buttons = this.element.querySelectorAll('li');
+
+    buttons.forEach((btn) => {
+      btn.classList.remove('disabled');
+    });
+  }
 }

@@ -19,14 +19,15 @@ export class CatalogPage {
 
     this.renderBreedsFilters();
     this.renderOrderFilters();
-    this.renderCatalog();
     this.renderNavigation();
+    this.renderCatalog();
   }
 
   renderCatalog() {
     const loader = new Loader();
 
     loader.startLoading(this.catalogRow);
+    this.pagination.disablePagination();
 
     api
       .getCats({
@@ -47,6 +48,7 @@ export class CatalogPage {
       })
       .finally(() => {
         loader.endLoading();
+        this.pagination.activatePagination();
       });
   }
 

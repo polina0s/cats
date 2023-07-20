@@ -12,19 +12,28 @@ class Api {
       { skipNull: true },
     );
 
-    const response = await fetch(
-      `${this.link}images/search?${query}&api_key=${this.key}`,
-    );
+    const response = await this.request(`${this.link}images/search?${query}`);
     const json = await response.json();
 
     return json;
   }
 
   async getCatById(id) {
-    const response = await fetch(`${this.link}images/${id}`);
+    const response = await this.request(`${this.link}images/${id}`);
     const json = await response.json();
 
     return json;
+  }
+
+  async request(url, options = {}) {
+    return fetch(url, {
+      ...options,
+      headers: { ...options?.headers, 'x-api-key': this.key },
+    });
+
+    // const response = await fetch(
+    //   `${this.link}images/search?${query}&api_key=${this.key}`,
+    // );
   }
 }
 
