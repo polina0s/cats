@@ -29,7 +29,12 @@ export class CatalogPage {
     loader.startLoading(this.catalogRow);
 
     api
-      .getCats(this.page, 12, BREEDS_MAP.get(this.breed))
+      .getCats({
+        page: this.page,
+        limit: 12,
+        breed: BREEDS_MAP.get(this.breed),
+        order: ORDER_MAP.get(this.order),
+      })
       .then((result) => {
         result.forEach((catImage) => {
           const card = new Card({
@@ -45,34 +50,27 @@ export class CatalogPage {
       });
   }
 
-  handlePageChange(newPage) {
+  handleChange({ page = this.page, breed = this.breed, order = this.order }) {
     const query = queryString.stringify(
-      { page: newPage, breeds: this.breed },
+      { page: page, breeds: breed, order: order },
       { skipNull: true },
     );
 
     history.replaceState(null, null, `?${query}`);
+    this.page = page;
     this.catalogRow.innerHTML = '';
     this.renderCatalog();
   }
 
-  handleFilterChange(value) {
-    this.breed = value;
-    const query = queryString.stringify(
-      { page: 1, breeds: value },
-      { skipNull: true },
-    );
-
-    history.replaceState(null, null, `?${query}`);
-    this.catalogRow.innerHTML = '';
-    this.renderCatalog();
+  setDefaultPage() {
+    this.page = 1;
     this.pagination.setPage(1);
   }
 
   renderNavigation() {
     this.pagination = new Pagination({
       defaultPage: this.page,
-      onPageChange: (newPage) => this.handlePageChange(newPage),
+      onPageChange: (newPage) => this.handleChange({ page: newPage }),
     });
 
     document.querySelector('body').append(this.pagination.element);
@@ -80,7 +78,11 @@ export class CatalogPage {
 
   renderBreedsFilters() {
     const breedSelect = new Select({
-      onChange: (e) => this.handleFilterChange(e.target.value),
+      onChange: (e) => {
+        this.breed = e.target.value;
+        this.setDefaultPage();
+        this.handleChange({ breed: e.target.value });
+      },
       defaultSelected: this.breed,
       options: BREEDS_OPTIONS,
     });
@@ -90,6 +92,11 @@ export class CatalogPage {
 
   renderOrderFilters() {
     const orderSelect = new Select({
+      onChange: (e) => {
+        this.order = e.target.value;
+        this.setDefaultPage();
+        this.handleChange({ order: e.target.value });
+      },
       defaultSelected: this.order,
       options: ORDER_OPTIONS,
     });

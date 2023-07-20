@@ -4,17 +4,16 @@ class Api {
   constructor() {
     this.link = import.meta.env.VITE_LINK;
     this.key = import.meta.env.VITE_KEY;
-    this.path = 'images/search?';
   }
 
-  async getCats(page = 0, limit = 20, breed = null) {
+  async getCats({ page = 0, limit = 20, breed = null, order = null }) {
     const query = queryString.stringify(
-      { page, limit, has_breeds: breed },
+      { page, limit, has_breeds: breed, order: order },
       { skipNull: true },
     );
 
     const response = await fetch(
-      `${this.link}${this.path}${query}&api_key=${this.key}`,
+      `${this.link}images/search?${query}&api_key=${this.key}`,
     );
     const json = await response.json();
 
