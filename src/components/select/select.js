@@ -36,6 +36,6 @@ export class Select {
   }
 
   activateSelect() {
-    this.element.querySelector('select').setAttribute('disabled', '');
+    this.element.querySelector('select').removeAttribute('disabled');
   }
 }

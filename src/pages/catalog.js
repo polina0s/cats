@@ -20,9 +20,8 @@ export class CatalogPage {
 
     this.renderBreedsFilters();
     this.renderOrderFilters();
-    this.renderNameList();
     this.renderNavigation();
-    this.renderCatalog();
+    this.renderNameList(this.renderCatalog.bind(this));
   }
 
   renderCatalog() {
@@ -30,10 +29,7 @@ export class CatalogPage {
 
     loader.startLoading(this.catalogRow);
     this.pagination.disablePagination();
-
-    // document
-    // .querySelectorAll('select')
-    // .forEach((el) => el.setAttribute('disabled', 'disabled'));
+    // this.disableSelects();
 
     api
       .getCats({
@@ -62,6 +58,7 @@ export class CatalogPage {
       // })
       .finally(() => {
         loader.endLoading();
+        // this.activateSelects();
       });
   }
 
@@ -124,7 +121,7 @@ export class CatalogPage {
     this.selectContainer.append(this.orderSelect.element);
   }
 
-  renderNameList() {
+  renderNameList(cb) {
     api.getBreedsList().then((result) => {
       this.nameList = new Select({
         onChange: (e) => {
@@ -141,6 +138,20 @@ export class CatalogPage {
         .setAttribute('style', 'width: 210px');
 
       this.selectContainer.append(this.nameList.element);
+
+      cb?.();
     });
+  }
+
+  disableSelects() {
+    this.breedSelect.disableSelect();
+    this.orderSelect.disableSelect();
+    this.nameList.disableSelect();
+  }
+
+  activateSelects() {
+    this.breedSelect.activateSelect();
+    this.orderSelect.activateSelect();
+    this.nameList.activateSelect();
   }
 }
