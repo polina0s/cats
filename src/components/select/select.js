@@ -30,4 +30,12 @@ export class Select {
       this.createSelect();
     });
   }
+
+  disableSelect() {
+    this.element.querySelector('select').setAttribute('disabled', 'disabled');
+  }
+
+  activateSelect() {
+    this.element.querySelector('select').setAttribute('disabled', '');
+  }
 }

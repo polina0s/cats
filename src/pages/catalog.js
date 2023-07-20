@@ -31,6 +31,10 @@ export class CatalogPage {
     loader.startLoading(this.catalogRow);
     this.pagination.disablePagination();
 
+    document
+      .querySelectorAll('select')
+      .forEach((el) => el.setAttribute('disabled', 'disabled'));
+
     api
       .getCats({
         page: this.page,
@@ -53,9 +57,9 @@ export class CatalogPage {
           this.pagination.activatePagination();
         }
       })
-      .catch(() => {
-        alert('reload page');
-      })
+      // .catch(() => {
+      //   alert('reload page');
+      // })
       .finally(() => {
         loader.endLoading();
       });
@@ -93,7 +97,7 @@ export class CatalogPage {
   }
 
   renderBreedsFilters() {
-    const breedSelect = new Select({
+    this.breedSelect = new Select({
       onChange: (e) => {
         this.breed = e.target.value;
         this.setDefaultPage();
@@ -103,11 +107,11 @@ export class CatalogPage {
       options: BREEDS_OPTIONS,
     });
 
-    this.selectContainer.append(breedSelect.element);
+    this.selectContainer.append(this.breedSelect.element);
   }
 
   renderOrderFilters() {
-    const orderSelect = new Select({
+    this.orderSelect = new Select({
       onChange: (e) => {
         this.order = e.target.value;
         this.setDefaultPage();
@@ -117,12 +121,12 @@ export class CatalogPage {
       options: ORDER_OPTIONS,
     });
 
-    this.selectContainer.append(orderSelect.element);
+    this.selectContainer.append(this.orderSelect.element);
   }
 
   renderNameList() {
     api.getBreedsList().then((result) => {
-      const nameList = new Select({
+      this.nameList = new Select({
         onChange: (e) => {
           this.name = e.target.value;
           this.setDefaultPage();
@@ -132,11 +136,11 @@ export class CatalogPage {
         options: result,
       });
 
-      nameList.element
+      this.nameList.element
         .querySelector('select')
         .setAttribute('style', 'width: 210px');
 
-      this.selectContainer.append(nameList.element);
+      this.selectContainer.append(this.nameList.element);
     });
   }
 }
