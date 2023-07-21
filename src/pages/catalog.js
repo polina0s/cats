@@ -41,7 +41,6 @@ export class CatalogPage {
       })
       .then((result) => {
         result.forEach((catImage) => {
-          console.log(this.name);
           const card = new Card({
             id: catImage.id,
             url: catImage.url,
@@ -51,7 +50,6 @@ export class CatalogPage {
         });
 
         if (result.length >= 12) {
-          console.log(result.length);
           this.pagination.activatePagination();
         }
       })
