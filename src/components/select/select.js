@@ -32,10 +32,14 @@ export class Select {
   }
 
   disableSelect() {
-    this.element.querySelector('select').setAttribute('disabled', 'disabled');
+    setTimeout(() => {
+      this.element.querySelector('select').setAttribute('disabled', true);
+    }, 0.1);
   }
 
   activateSelect() {
-    this.element.querySelector('select').removeAttribute('disabled');
+    setTimeout(() => {
+      this.element.querySelector('select').removeAttribute('disabled');
+    }, 0.1);
   }
 }

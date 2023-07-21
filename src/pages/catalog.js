@@ -29,7 +29,7 @@ export class CatalogPage {
 
     loader.startLoading(this.catalogRow);
     this.pagination.disablePagination();
-    // this.disableSelects();
+    this.disableSelects();
 
     api
       .getCats({
@@ -58,7 +58,7 @@ export class CatalogPage {
       // })
       .finally(() => {
         loader.endLoading();
-        // this.activateSelects();
+        this.activateSelects();
       });
   }
 
@@ -123,6 +123,8 @@ export class CatalogPage {
 
   renderNameList(cb) {
     api.getBreedsList().then((result) => {
+      let a = [{ value: 'null', label: 'Choose a breed' }, ...result];
+      console.log(a);
       this.nameList = new Select({
         onChange: (e) => {
           this.name = e.target.value;
@@ -130,7 +132,7 @@ export class CatalogPage {
           this.handleChange({ breedId: e.target.value });
         },
         defaultSelected: this.name,
-        options: result,
+        options: a,
       });
 
       this.nameList.element
