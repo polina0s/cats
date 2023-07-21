@@ -51,12 +51,13 @@ export class CatalogPage {
         });
 
         if (result.length >= 12) {
+          console.log(result.length);
           this.pagination.activatePagination();
         }
       })
-      // .catch(() => {
-      //   alert('reload page');
-      // })
+      .catch(() => {
+        alert('Reload page');
+      })
       .finally(() => {
         loader.endLoading();
         this.activateSelects();
@@ -124,8 +125,7 @@ export class CatalogPage {
 
   renderNameList(cb) {
     api.getBreedsList().then((result) => {
-      let options = [{ value: 'null', label: 'Choose a breed' }, ...result];
-      console.log(options);
+      let options = [{ value: null, label: 'Choose a breed' }, ...result];
       this.nameList = new Select({
         onChange: (e) => {
           this.name = e.target.value;
