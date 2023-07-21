@@ -41,6 +41,7 @@ export class CatalogPage {
       })
       .then((result) => {
         result.forEach((catImage) => {
+          console.log(this.name);
           const card = new Card({
             id: catImage.id,
             url: catImage.url,
@@ -123,8 +124,8 @@ export class CatalogPage {
 
   renderNameList(cb) {
     api.getBreedsList().then((result) => {
-      let a = [{ value: 'null', label: 'Choose a breed' }, ...result];
-      console.log(a);
+      let options = [{ value: 'null', label: 'Choose a breed' }, ...result];
+      console.log(options);
       this.nameList = new Select({
         onChange: (e) => {
           this.name = e.target.value;
@@ -132,7 +133,7 @@ export class CatalogPage {
           this.handleChange({ breedId: e.target.value });
         },
         defaultSelected: this.name,
-        options: a,
+        options: options,
       });
 
       this.nameList.element
