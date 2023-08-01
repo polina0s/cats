@@ -46,6 +46,7 @@ export class CatalogPage {
             url: catImage.url,
             link: `/cat/${catImage.id}`,
           });
+
           this.catalogRow.append(card.element);
         });
 
