@@ -124,12 +124,13 @@ export class CatalogPage {
 
   renderNameList(cb) {
     api.getBreedsList().then((result) => {
-      let options = [{ value: null, label: 'Choose a breed' }, ...result];
+      let options = [{ value: 'all', label: 'All breeds' }, ...result];
       this.nameList = new Select({
         onChange: (e) => {
-          this.name = e.target.value;
+          this.name = e.target.value === 'all' ? null : e.target.value;
+
           this.setDefaultPage();
-          this.handleChange({ breedId: e.target.value });
+          this.handleChange({ breedId: this.name });
         },
         defaultSelected: this.name,
         options: options,
