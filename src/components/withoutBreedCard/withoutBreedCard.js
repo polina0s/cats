@@ -1,11 +1,11 @@
-export class ImageCard {
+export class WithoutBreedCard {
   constructor(src) {
     this.src = src;
 
-    this.createImageCard(src);
+    this.createCard(src);
   }
 
-  createImageCard() {
+  createCard() {
     this.element = document.createElement('div');
     this.element.style =
       'max-width: 1120px; margin: 0 auto; text-align: center';

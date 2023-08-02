@@ -1,7 +1,7 @@
 import { api } from '../api/api';
 import { Loader } from '../components/loader/loader';
-import { BreedCard } from '../components/card/breedCard';
-import { ImageCard } from '../components/card/imageCard';
+import { BreedCard } from '../components/breedCard/breedCard';
+import { WithoutBreedCard } from '../components/withoutBreedCard/withoutBreedCard';
 export class CatPage {
   constructor({ id }) {
     this.id = id;
@@ -38,7 +38,7 @@ export class CatPage {
           });
           this.catalogRow.append(card.element);
         } else {
-          const card = new ImageCard(result.url);
+          const card = new WithoutBreedCard(result.url);
           this.catalogRow.append(card.element);
         }
       })
