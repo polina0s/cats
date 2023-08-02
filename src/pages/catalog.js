@@ -9,11 +9,11 @@ import queryString from 'query-string';
 
 export class CatalogPage {
   constructor() {
-    this.urlSearchParams = new URLSearchParams(location.search);
-    this.page = +this.urlSearchParams.get('page') || 1;
-    this.breed = this.urlSearchParams.get('breeds') || BREEDS_KEYS.RANDOM;
-    this.order = this.urlSearchParams.get('order') || ORDER_KEYS.RANDOM;
-    this.name = this.urlSearchParams.get('breedId') || null;
+    const parsedQueryParams = queryString.parse(location.search);
+    this.page = parsedQueryParams.page || 1;
+    this.breed = parsedQueryParams.breeds || BREEDS_KEYS.RANDOM;
+    this.order = parsedQueryParams.order || ORDER_KEYS.RANDOM;
+    this.name = parsedQueryParams.breedId || null;
 
     this.catalogRow = document.querySelector('#catalog-row');
     this.selectContainer = document.querySelector('#select-container');
