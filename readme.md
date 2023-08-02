@@ -9,8 +9,8 @@
 
 1. Go to https://thecatapi.com/
 2. Go down the page to the "Pricing" section
-3. Press the button "Singup for free"
-4. Fill the form and press the button 'Singup'
-5. After that you receive a message with API key to your Email
+3. Press the button "Signup for free"
+4. Fill the form and press the button 'Signup'
+5. After that you will receive a message with API key to your Email
 6. Copy the API key in message
 7. Write the copied API key in a VITE_KEY variable
