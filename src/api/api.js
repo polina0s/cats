@@ -32,7 +32,7 @@ class Api {
   }
 
   async getBreedsList() {
-    const response = await fetch(`${this.link}breeds`);
+    const response = await this.request(`${this.link}breeds`);
     const json = await response.json();
 
     return json.map((obj) => {
